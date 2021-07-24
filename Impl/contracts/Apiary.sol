@@ -4,13 +4,13 @@ pragma solidity >=0.7.0 <0.9.0;
 
 import "./TownHall.sol";
 
+/**
+ * @title Apiary
+ * @dev The Apiary SC Member
+ */
+
 contract Apiary {
     
-    //uint128 public _idApiary;
-    
-    //uint128 public _idApiaryLicense = 0;
-    
-
     /** Contract states */
 
     address public _owner;
@@ -24,14 +24,20 @@ contract Apiary {
     
     uint128 public _quantity_uint = 0;
 
+    /** One instace of townhall to get the valid license */
+    TownHall public townHall;
+    
     /** Contract events */
 
+    /** Log honey and quantity when the Apiary register a new honey input */
     event RegisterHoneyEv(
         string apiaryHoney,
         uint128 quantity
     );
     
     /** Contract access modifiers */
+    
+    /** This modifier restrict the access to the creator of the smart contract (the owner) */
     modifier restricted() {
         require (
         msg.sender == _owner,
@@ -40,16 +46,33 @@ contract Apiary {
         _;
     }
     
+    /** When a new instance is deployed, the owner address get the sender address */
     constructor () {
-        _owner = tx.origin;
+        _owner = msg.sender; 
     }
 
-    function AddNewHoneyType(string memory honeyType) public restricted {
-        require(keccak256(bytes(_honeyTypes_str)) == keccak256(bytes("")));
+    /** 
+    *   If the Apiary can provide a new honey type, it can append to the existent list of honey types 
+    */
+    function AddNewHoneyType(
+        string memory honeyType
+        ) 
+    public 
+    restricted {
+        
+        //require(keccak256(bytes(_honeyTypes_str)) == keccak256(bytes("")));
         _honeyTypes_str = string(abi.encodePacked(_honeyTypes_str, honeyType));
     }
 
-    function SetHoneyQuantityPerType(string memory apiaryHoney, uint128 quantity) public restricted {
+    /** Set the quantity for honey type
+        Example set 1000kg when you want to sells or set to 0kg when the honey is sold */
+    function SetHoneyQuantityPerType(
+        string memory apiaryHoney, 
+        uint128 quantity
+        ) 
+    public 
+    restricted {
+        
         require(keccak256(bytes(_apiaryHoney_str)) == keccak256(bytes("")));
         require(_quantity_uint == 0);
         _apiaryHoney_str = apiaryHoney;
@@ -58,31 +81,46 @@ contract Apiary {
         emit RegisterHoneyEv(_apiaryHoney_str, _quantity_uint);
     }
 
+    /** Update Apiary keeper personal data */
     function UpdatePersonalData(
         string memory producerName,
         string memory producerLocation
     )
     public
     restricted {
+        
         _producerName_str = producerName;
         _producerLocation_str = producerLocation;
     }
 
+    /** Update Apiary society data */
     function UpdateApiaryData(
         string memory apiaryName,
         string memory apiaryLocation
     )
     public
     restricted {
+        
         _apiaryName_str = apiaryName;
         _apiaryLocation_str = apiaryLocation;
     }
 
-    function RequestLicense() public payable restricted {
+    /** The Apiary member has to register to the TownHall */   
+    function RegisterToTownHall(
+        address townHallContract_addr
+        ) 
+    public {
         
-        TownHall townHall = new TownHall();
-        //townHall.EmitLicense("Popescu", "Str. Principala, 19", "ApiSRL", "Str. Salcamilor, 190", "Salcam");
-        
+        townHall = TownHall(townHallContract_addr);
+        townHall.UpdateTotalBeekeepers();
+    }
+
+    /** The Apiary request a new valid License to be able to market the honey */
+    function RequestLicense() 
+    public 
+    payable
+    restricted {
+
         townHall.EmitLicense(
             _producerName_str,
             _producerLocation_str,
@@ -90,13 +128,5 @@ contract Apiary {
             _apiaryLocation_str,
             _honeyTypes_str
             );
-    }
-    
-    /**
-     * @dev Return value 
-     * @return value of 'number'
-     */
-    function retrieveLicense() public view returns (uint8){
-        return 0;
     }
 }
