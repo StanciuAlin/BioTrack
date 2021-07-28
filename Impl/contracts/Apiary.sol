@@ -3,6 +3,7 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "./TownHall.sol";
+import "./AcquisitionCenter.sol";
 
 /**
  * @title Apiary
@@ -24,8 +25,11 @@ contract Apiary {
     
     uint128 public _quantity_uint = 0;
 
-    /** One instace of townhall to get the valid license */
+    /** One instace of Townhall to get the valid license */
     TownHall public townHall;
+    
+    /** One instace of Acquisition Center to sell the honey */
+    AcquisitionCenter public acquisitionCenter;
     
     /** Contract events */
 
@@ -53,6 +57,7 @@ contract Apiary {
 
     /** 
     *   If the Apiary can provide a new honey type, it can append to the existent list of honey types 
+    *   Temporary limitation: only one honey type per Apiary
     */
     function AddNewHoneyType(
         string memory honeyType
@@ -73,9 +78,9 @@ contract Apiary {
     public 
     restricted {
         
-        require(keccak256(bytes(_apiaryHoney_str)) == keccak256(bytes("")));
-        require(_quantity_uint == 0);
         _apiaryHoney_str = apiaryHoney;
+        require(keccak256(bytes(_apiaryHoney_str)) == keccak256(bytes(_honeyTypes_str)));
+        require(_quantity_uint == 0);
         _quantity_uint = quantity;
         
         emit RegisterHoneyEv(_apiaryHoney_str, _quantity_uint);
@@ -115,6 +120,16 @@ contract Apiary {
         townHall.UpdateTotalBeekeepers();
     }
 
+    /** The Apiary member has to register to the Acquisition Center */   
+    function RegisterToAcquisitionCenter(
+        address acquisitionCenterContract_addr
+        ) 
+    public {
+        
+        acquisitionCenter = AcquisitionCenter(acquisitionCenterContract_addr);
+    }
+
+
     /** The Apiary request a new valid License to be able to market the honey */
     function RequestLicense() 
     public 
@@ -129,4 +144,38 @@ contract Apiary {
             _honeyTypes_str
             );
     }
+    
+    /**  */
+    function SellHoney(
+        string memory apiaryHoney, 
+        uint128 quantity
+        )
+        public
+        payable
+        restricted {
+            
+            /* Apiary available honey should be the same type like the honey which is sold */
+            require(keccak256(bytes(_apiaryHoney_str)) == keccak256(bytes(apiaryHoney)));
+            //_apiaryHoney_str = "";
+            require(_quantity_uint >= quantity);
+            _quantity_uint -= quantity;
+            
+            /* If there is no other honey of current type, reset the apiary available honey */
+            if(_quantity_uint == 0) {
+                _apiaryHoney_str = "";
+            }
+            
+            acquisitionCenter.RegisterBeekeeperHoney(
+                _owner,
+                apiaryHoney,
+                quantity
+                );
+            
+            /* Here should be an event triggered */
+            
+            /** TODO 
+            * Event rised when the honey is solt to one Acquisition Center.
+            */
+        }
+    
 }

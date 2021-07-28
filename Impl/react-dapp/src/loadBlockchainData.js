@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { APIARY_ABI, APIARY_ADDRESS } from './supply-chain/config/config-apiary'
-import { TOWNHALL_ABI, TOWNHALL_ADDRESS } from './supply-chain/config/config-townhall'
+import { APIARY_ABI, APIARY_ADDRESS } from './components/supply-chain/config/config-apiary'
+import { TOWNHALL_ABI, TOWNHALL_ADDRESS } from './components/supply-chain/config/config-townhall'
 import Web3 from 'web3';
 
-var web3 = undefined;
+export var web3 = undefined;
 
 export async function connectToBlockchain() {
 

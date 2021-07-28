@@ -9,6 +9,13 @@ import "./TownHall.sol";
  * @dev The Processor SC Member
  */
 
+
+
+// Am un array de address intr o structura, pentru a stii lotul din cate stupine diferite a fost creat
+// Pot avea un lot creat cu miere din mai multe stupine.
+
+
+
 contract Processor {
     
     /** Contract states */
