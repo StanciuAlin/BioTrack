@@ -20,14 +20,14 @@ import "../interfaces/ITownHall.sol";
     
     /** 
     *   Increase the variable whenever a new Apiary instance is created 
-    *   numOfBeekeepers_uint != _counterLicenses
+    *   _numOfBeekeepers_uint != _counterLicenses
     *   Number of beekeepers may be higher then the number of licenses because one beekeeper
     *       does not always have a valid license
     */
-    uint16 public numOfBeekeepers_uint = 0;
+    uint16 public _numOfBeekeepers_uint = 0;
 
-    string public townName_str = "";
-    string public townCountry_str = "";
+    string public _townName_str = "";
+    string public _townCountry_str = "";
  
     /** TownHall keeps the track of valid licenses, with address as a key and apiary address as a value */
     //mapping(address => ApiaryAddress_st) public licenses;
@@ -35,7 +35,7 @@ import "../interfaces/ITownHall.sol";
 
     /* License_st _validLicense_st; No needed for the moment */
 
-    event LicenseEv (License_st lic);
+    event LicenseEv (address owner, License_st lic);
  
     /* Struct to keep a pair of ApiaryAddress with its id in TownHall registers
     struct ApiaryAddress_st {
@@ -47,13 +47,14 @@ import "../interfaces/ITownHall.sol";
 
     struct License_st {
         uint128 _idLicense_uint;
+        address _accountRequester_addr;
         string _producerName_str;
         string _producerAddress_str;
         string _apiaryName_str;
         string _apiaryAddress_str;
         string _honeyTypes_str;
         uint8 _validityMonths_uint;
-        string _expirationDate_str;
+        uint _expirationDate_str;
     }
     
     
@@ -74,27 +75,40 @@ import "../interfaces/ITownHall.sol";
         /* Perform some operations */
     }
     
+    /**  */
+    function UpdateTownHallLocation(
+        string memory townName_str,
+        string memory townCountry_str
+        )
+        public
+        restricted {
+        
+            _townName_str = townName_str;
+            _townCountry_str = townCountry_str;
+    }
 
     /** Emit a new valid license for an Apiary requester */
     function EmitLicense(
-        string memory _producerName,
-        string memory _producerAddress,
-        string memory _apiaryName,
-        string memory _apiaryAddress,
-        string memory _honeyTypes)
+        address accountRequester,
+        string memory producerName,
+        string memory producerAddress,
+        string memory apiaryName,
+        string memory apiaryAddress,
+        string memory honeyTypes)
     external 
     override {
             
         /* Create a new license and update the fields */
         License_st memory license = License_st({
                                     _idLicense_uint : _counterLicenses,
-                                    _producerName_str :_producerName,
-                                    _producerAddress_str :_producerAddress,
-                                    _apiaryName_str : _apiaryName,
-                                    _apiaryAddress_str : _apiaryAddress,
-                                    _honeyTypes_str : _honeyTypes,
+                                    _accountRequester_addr: accountRequester,
+                                    _producerName_str :producerName,
+                                    _producerAddress_str :producerAddress,
+                                    _apiaryName_str : apiaryName,
+                                    _apiaryAddress_str : apiaryAddress,
+                                    _honeyTypes_str : honeyTypes,
                                     _validityMonths_uint : 12,
-                                    _expirationDate_str : "31.12.2021"});
+                                    _expirationDate_str : block.timestamp + 365 days});
 
         /* Save the apiary sender request and his license, uniquely
         ApiaryAddress_st memory _newApiaryAddress = ApiaryAddress_st({
@@ -110,14 +124,15 @@ import "../interfaces/ITownHall.sol";
         _counterLicenses += 1;
 
         /* Emit License event */
-        emit LicenseEv(license);
+        emit LicenseEv(accountRequester, license);
     }
 
     /** When a new Apiary is created, increase the number of total beekeeper in TownHall registers */
     function UpdateTotalBeekeepers ()
-    external
-    override {
+        external
+        override {
 
-        numOfBeekeepers_uint += 1;
+            _numOfBeekeepers_uint += 1;
     }
+
 }

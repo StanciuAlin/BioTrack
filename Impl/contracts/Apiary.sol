@@ -20,8 +20,8 @@ contract Apiary {
     string public _producerLocation_str = "";
     string public _apiaryName_str = "";
     string public _apiaryLocation_str = "";
-    string public _honeyTypes_str = ""; 
-    string public _apiaryHoney_str = "";
+    string public _honeyTypeAvailableInApiary_str = ""; 
+    string public _honeyTypeAvailableToSell_str = "";
     
     uint128 public _quantity_uint = 0;
 
@@ -36,7 +36,8 @@ contract Apiary {
     /** Log honey and quantity when the Apiary register a new honey input */
     event RegisterHoneyEv(
         string apiaryHoney,
-        uint128 quantity
+        uint128 quantity,
+        uint256 totalQuantity
     );
     
     /** Contract access modifiers */
@@ -59,14 +60,14 @@ contract Apiary {
     *   If the Apiary can provide a new honey type, it can append to the existent list of honey types 
     *   Temporary limitation: only one honey type per Apiary
     */
-    function AddNewHoneyType(
+    function AddNewHoneyTypeInApiary(
         string memory honeyType
         ) 
     public 
     restricted {
         
-        //require(keccak256(bytes(_honeyTypes_str)) == keccak256(bytes("")));
-        _honeyTypes_str = string(abi.encodePacked(_honeyTypes_str, honeyType));
+        //require(keccak256(bytes(_honeyTypeAvailableInApiary_str)) == keccak256(bytes("")));
+        _honeyTypeAvailableInApiary_str = string(abi.encodePacked(_honeyTypeAvailableInApiary_str, honeyType));
     }
 
     /** Set the quantity for honey type
@@ -78,12 +79,12 @@ contract Apiary {
     public 
     restricted {
         
-        _apiaryHoney_str = apiaryHoney;
-        require(keccak256(bytes(_apiaryHoney_str)) == keccak256(bytes(_honeyTypes_str)));
-        require(_quantity_uint == 0);
-        _quantity_uint = quantity;
+        _honeyTypeAvailableToSell_str = apiaryHoney;
+        require(keccak256(bytes(_honeyTypeAvailableToSell_str)) == keccak256(bytes(_honeyTypeAvailableInApiary_str)));
+        //require(_quantity_uint == 0);
+        _quantity_uint += quantity;
         
-        emit RegisterHoneyEv(_apiaryHoney_str, _quantity_uint);
+        emit RegisterHoneyEv(apiaryHoney, quantity, _quantity_uint);
     }
 
     /** Update Apiary keeper personal data */
@@ -111,20 +112,22 @@ contract Apiary {
     }
 
     /** The Apiary member has to register to the TownHall */   
-    function RegisterToTownHall(
+    function RegisterAtTownHall(
         address townHallContract_addr
         ) 
-    public {
+    public 
+    restricted {
         
         townHall = TownHall(townHallContract_addr);
         townHall.UpdateTotalBeekeepers();
     }
 
     /** The Apiary member has to register to the Acquisition Center */   
-    function RegisterToAcquisitionCenter(
+    function RegisterAtAcquisitionCenter(
         address acquisitionCenterContract_addr
         ) 
-    public {
+    public 
+    restricted {
         
         acquisitionCenter = AcquisitionCenter(acquisitionCenterContract_addr);
     }
@@ -137,11 +140,12 @@ contract Apiary {
     restricted {
 
         townHall.EmitLicense(
+            _owner,
             _producerName_str,
             _producerLocation_str,
             _apiaryName_str,
             _apiaryLocation_str,
-            _honeyTypes_str
+            _honeyTypeAvailableInApiary_str
             );
     }
     
@@ -155,14 +159,15 @@ contract Apiary {
         restricted {
             
             /* Apiary available honey should be the same type like the honey which is sold */
-            require(keccak256(bytes(_apiaryHoney_str)) == keccak256(bytes(apiaryHoney)));
-            //_apiaryHoney_str = "";
+            require(keccak256(bytes(_honeyTypeAvailableInApiary_str)) == keccak256(bytes(apiaryHoney)));
+            //_honeyTypeAvailableToSell_str = "";
             require(_quantity_uint >= quantity);
             _quantity_uint -= quantity;
             
             /* If there is no other honey of current type, reset the apiary available honey */
             if(_quantity_uint == 0) {
-                _apiaryHoney_str = "";
+                _honeyTypeAvailableToSell_str = "";
+                _honeyTypeAvailableInApiary_str = "";
             }
             
             acquisitionCenter.RegisterBeekeeperHoney(

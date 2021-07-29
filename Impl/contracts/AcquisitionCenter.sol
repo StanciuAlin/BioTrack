@@ -125,7 +125,7 @@ contract AcquisitionCenter is IAcquisitionCenter{
             
         }
 
-    /**  */ 
+    /** Here, return the price quantity_uint * price din arrayul cu evidenta tipurilor de miere */ 
     function RegisterBeekeeperHoney (
         address apiaryAccount_addr,
         string memory honeyType_str,
