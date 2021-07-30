@@ -5,12 +5,14 @@ pragma solidity >=0.7.0 <0.9.0;
 import "./TownHall.sol";
 import "./AcquisitionCenter.sol";
 
+import "../interfaces/IApiary.sol";
+
 /**
  * @title Apiary
  * @dev The Apiary SC Member
  */
 
-contract Apiary {
+contract Apiary is IApiary {
     
     /** Contract states */
 
@@ -24,6 +26,15 @@ contract Apiary {
     string public _honeyTypeAvailableToSell_str = "";
     
     uint128 public _quantity_uint = 0;
+    
+    uint public _apiaryHoneyUID_uint = 1;
+    
+    struct HoneyInApiaryToSell_st {
+        string honeyType;
+        uint128 quantity;
+    }
+
+    mapping (uint => HoneyInApiaryToSell_st) public honeyInApiaryToSellEvidence;
 
     /** One instace of Townhall to get the valid license */
     TownHall public townHall;
@@ -35,9 +46,11 @@ contract Apiary {
 
     /** Log honey and quantity when the Apiary register a new honey input */
     event RegisterHoneyEv(
+        uint apiaryHoneyUID,
         string apiaryHoney,
         uint128 quantity,
-        uint256 totalQuantity
+        uint256 totalQuantity,
+        uint timestamp
     );
     
     /** Contract access modifiers */
@@ -72,7 +85,7 @@ contract Apiary {
 
     /** Set the quantity for honey type
         Example set 1000kg when you want to sells or set to 0kg when the honey is sold */
-    function SetHoneyQuantityPerType(
+    function AddHoneyInApiaryToSell(
         string memory apiaryHoney, 
         uint128 quantity
         ) 
@@ -81,10 +94,20 @@ contract Apiary {
         
         _honeyTypeAvailableToSell_str = apiaryHoney;
         require(keccak256(bytes(_honeyTypeAvailableToSell_str)) == keccak256(bytes(_honeyTypeAvailableInApiary_str)));
-        //require(_quantity_uint == 0);
+        
+        /* Update global honey quantity */
         _quantity_uint += quantity;
         
-        emit RegisterHoneyEv(apiaryHoney, quantity, _quantity_uint);
+        HoneyInApiaryToSell_st memory newHoneyToSell = HoneyInApiaryToSell_st({
+            honeyType: apiaryHoney,
+            quantity: quantity
+        });
+        
+        honeyInApiaryToSellEvidence[_apiaryHoneyUID_uint] = newHoneyToSell;
+        
+        _apiaryHoneyUID_uint += 1;
+        
+        emit RegisterHoneyEv(_apiaryHoneyUID_uint, apiaryHoney, quantity, _quantity_uint, block.timestamp);
     }
 
     /** Update Apiary keeper personal data */
@@ -150,7 +173,11 @@ contract Apiary {
     }
     
     /**  */
+    
+    // counter separat pentru ToSell array
+    // quantity scade pentru fiecare item din array, nu -= ...
     function SellHoney(
+        uint apiaryHoneyUIDToSell,
         string memory apiaryHoney, 
         uint128 quantity
         )
@@ -160,8 +187,36 @@ contract Apiary {
             
             /* Apiary available honey should be the same type like the honey which is sold */
             require(keccak256(bytes(_honeyTypeAvailableInApiary_str)) == keccak256(bytes(apiaryHoney)));
-            //_honeyTypeAvailableToSell_str = "";
-            require(_quantity_uint >= quantity);
+            
+            
+            if (apiaryHoneyUIDToSell == 0) {
+                require(honeyInApiaryToSellEvidence[_apiaryHoneyUID_uint].quantity >= quantity);
+                
+                honeyInApiaryToSellEvidence[_apiaryHoneyUID_uint].quantity -= quantity;
+                
+                /* Sell from the last honey registered */
+                
+                acquisitionCenter.RegisterReceivedBeekeeperHoney(
+                _owner,
+                _apiaryHoneyUID_uint,
+                apiaryHoney,
+                quantity
+                );
+            } else { /* Delete the honey registered with apiaryHoneyUIDToSell unique ID*/
+                //require(honeyInApiaryToSellEvidence[apiaryHoneyUIDToSell].quantity >= quantity);
+                
+                honeyInApiaryToSellEvidence[apiaryHoneyUIDToSell].quantity -= quantity;
+                
+                acquisitionCenter.RegisterReceivedBeekeeperHoney(
+                _owner,
+                _apiaryHoneyUID_uint,
+                honeyInApiaryToSellEvidence[apiaryHoneyUIDToSell].honeyType,
+                quantity
+                );
+            }
+            
+            // require(_quantity_uint >= quantity);
+            
             _quantity_uint -= quantity;
             
             /* If there is no other honey of current type, reset the apiary available honey */
@@ -170,11 +225,8 @@ contract Apiary {
                 _honeyTypeAvailableInApiary_str = "";
             }
             
-            acquisitionCenter.RegisterBeekeeperHoney(
-                _owner,
-                apiaryHoney,
-                quantity
-                );
+           
+            _apiaryHoneyUID_uint += 1;
             
             /* Here should be an event triggered */
             
@@ -182,5 +234,27 @@ contract Apiary {
             * Event rised when the honey is solt to one Acquisition Center.
             */
         }
-    
+        
+        //verfic
+    function ReturnNonEcologicalHoneyToApiary (
+        uint apiaryHoneyUID_uint,
+        string memory honeyType_str,
+        uint128 quantity_uint
+        ) 
+        external
+        override {
+            //require ( _honeyTypeAvailableInApiary_str == "" && _honeyTypeAvailableToSell_str == )
+            
+            /* Check if there is honey in apiary stock with the same type*/
+            if(_quantity_uint > 0) {
+                _quantity_uint += quantity_uint;
+                
+                HoneyInApiaryToSell_st memory newHoneyReturned = HoneyInApiaryToSell_st({
+                    honeyType: honeyType_str,
+                    quantity: quantity_uint
+                });
+                
+                honeyInApiaryToSellEvidence[_apiaryHoneyUID_uint] = newHoneyReturned;
+            }
+        }
 }
