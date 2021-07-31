@@ -245,6 +245,9 @@ contract Apiary is IApiary {
         override {
             //require ( _honeyTypeAvailableInApiary_str == "" && _honeyTypeAvailableToSell_str == )
             
+            //To avoid warning
+            apiaryHoneyUID_uint = apiaryHoneyUID_uint;
+            
             /* Check if there is honey in apiary stock with the same type*/
             if(_quantity_uint > 0) {
                 _quantity_uint += quantity_uint;

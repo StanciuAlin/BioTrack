@@ -5,6 +5,7 @@ pragma solidity >=0.7.0 <0.9.0;
 import "../interfaces/IAcquisitionCenter.sol";
 
 import "./Apiary.sol";
+import "./Laboratory.sol";
 
 /**
  * @title Acquisition Center
@@ -18,10 +19,13 @@ contract AcquisitionCenter is IAcquisitionCenter{
      
      uint public _creationTime_uint = block.timestamp;
      
+     uint itHoney = 0;
+     
      string public _acquisitionCenterName_str = "";
      string public _acquisitionCenterLocation_str = "";
      
      Apiary public apiary;
+     Laboratory public laboratory;
      
      struct AcquisitionCenterHoney_st {
          string honeyType_str;
@@ -36,6 +40,7 @@ contract AcquisitionCenter is IAcquisitionCenter{
          address apiaryAccount_addr;
          string honeyType_str;
          uint128 quantity_uint;
+         bool isBIO;
          bool isAvailable; /* flag for further delete process based on boolean Linux logical*/
          //string timestamp;
      }
@@ -46,7 +51,7 @@ contract AcquisitionCenter is IAcquisitionCenter{
     * Check the function which changes the beekeeperHoneyEvidence values
     */
 
-    //cand vine miere, o trimit imediat la analize, nu astept dupa mai multe sa fac un lot
+    /* Send to laboratory all honey received */
     mapping(uint256 => BeekeeperHoney_st) public beekeeperHoneyEvidence;
     
     uint128 public _counterBeekeeperHoney_uint = 0;
@@ -64,7 +69,8 @@ contract AcquisitionCenter is IAcquisitionCenter{
         uint128 honeyQuantity,
         uint payment
         ); 
-        
+    
+    // when return the honey to apiary    
     event ReturnNonEcologicalHoneyToApiaryEv();
     
     /** TODO 
@@ -128,9 +134,9 @@ contract AcquisitionCenter is IAcquisitionCenter{
             AcquisitionCenterHoney_st memory acquisitionCenterHoney;
             
             /** Search secquentially for the honey type in order to insert in list if it does not exist */
-            for(uint8 itHoney = 0; itHoney < honeyTypesWithPriceEvidence.length; ++itHoney) {
+            for(uint8 it = 0; it < honeyTypesWithPriceEvidence.length; ++it) {
                 /** If the honey type exists, toggle the flag to true */
-                if( keccak256(bytes(honeyType)) == keccak256(bytes(honeyTypesWithPriceEvidence[itHoney].honeyType_str)) ) {
+                if( keccak256(bytes(honeyType)) == keccak256(bytes(honeyTypesWithPriceEvidence[it].honeyType_str)) ) {
                     existFlag = true;
                 }
             }
@@ -162,13 +168,14 @@ contract AcquisitionCenter is IAcquisitionCenter{
             bool existFlag = false;
             
             /** Search secquentially for the honey type in order to insert in list if it does not exist */
-            for(uint8 itHoney = 0; itHoney < honeyTypesWithPriceEvidence.length; ++itHoney) {
+            for(uint8 it = 0; it < honeyTypesWithPriceEvidence.length; ++it) {
                 /** If the honey type exists, toggle the flag to true */
-                if( keccak256(bytes(honeyType_str)) == keccak256(bytes(honeyTypesWithPriceEvidence[itHoney].honeyType_str)) ) {
+                if( keccak256(bytes(honeyType_str)) == keccak256(bytes(honeyTypesWithPriceEvidence[it].honeyType_str)) ) {
                     existFlag = true;
                 }
             }
             
+            /* The received honey type should be in acquisitionCenter offer */
             require(existFlag == true);
             
             BeekeeperHoney_st memory newBeekeeperHoney = BeekeeperHoney_st({
@@ -178,6 +185,7 @@ contract AcquisitionCenter is IAcquisitionCenter{
                 apiaryAccount_addr: apiaryAccount_addr,
                 honeyType_str: honeyType_str,
                 quantity_uint: quantity_uint,
+                isBIO: false,
                 isAvailable: true
             });
             
@@ -198,20 +206,54 @@ contract AcquisitionCenter is IAcquisitionCenter{
                 25 * quantity_uint);
             
         }
-    bool public test = true;
-    function CheckHoneyAnalysysResults(
+    
+    /** The Acquisition Center member has to register to the Apiary */   
+    function RegisterApiary(
         address apiaryContract_addr
-        )
-        public {
+        ) 
+    public 
+    restricted {
         
         apiary = Apiary(apiaryContract_addr);
+    }
+
+
+    /** The Apiary member has to register to the Acquisition Center */   
+    function RegisterAtLaboratory(
+        address laboratoryCenterContract_addr
+        ) 
+    public 
+    restricted {
         
-        if(!test) {
-            apiary.ReturnNonEcologicalHoneyToApiary(
-                beekeeperHoneyEvidence[_acquisitionCenterHoneyUID_uint].apiaryHoneyUID_uint,
-                beekeeperHoneyEvidence[_acquisitionCenterHoneyUID_uint].honeyType_str,
-                beekeeperHoneyEvidence[_acquisitionCenterHoneyUID_uint].quantity_uint
+        laboratory = Laboratory(laboratoryCenterContract_addr);
+    }
+
+    
+    bool public test = true;
+    
+    
+    
+    function CheckHoneyAnalysysResults()
+        public
+        restricted {
+
+        for( itHoney; itHoney < _counterBeekeeperHoney_uint; ++itHoney) {
+            laboratory.AnalyzeHoney(
+                _owner,
+                beekeeperHoneyEvidence[_counterBeekeeperHoney_uint].honeyType_str
                 );
+            
+            /*  */
+            beekeeperHoneyEvidence[_counterBeekeeperHoney_uint].isBIO = true;
+            
+            if(beekeeperHoneyEvidence[_counterBeekeeperHoney_uint].isBIO == false) {
+                apiary.ReturnNonEcologicalHoneyToApiary(
+                    beekeeperHoneyEvidence[_counterBeekeeperHoney_uint].apiaryHoneyUID_uint,
+                    beekeeperHoneyEvidence[_counterBeekeeperHoney_uint].honeyType_str,
+                    beekeeperHoneyEvidence[_counterBeekeeperHoney_uint].quantity_uint
+                    );
+        }
+        
             // resetez tipul, cantitatea
         }
         
@@ -224,13 +266,13 @@ contract AcquisitionCenter is IAcquisitionCenter{
     
     
     
-    /** Have to fix it */
+    /** Suspended functionality --> Have to fix it */
     function DeleteBeekeeperHoneyData()
         public
         onlyAfterPeriod(_creationTime_uint) {
             
-            for(uint256 itHoney; itHoney < _counterBeekeeperHoney_uint; ++itHoney) {
-                beekeeperHoneyEvidence[itHoney].isAvailable = true;
+            for(uint256 it = 0; it < _counterBeekeeperHoney_uint; ++it) {
+                beekeeperHoneyEvidence[it].isAvailable = true;
             }
             
             /* Reset the counter again to point from start list, over-writing the existent data which is unavailable */
