@@ -1,0 +1,64 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "honeyType",
+						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "price",
+						"type": "uint8"
+					}
+				],
+				"name": "RegisterNewHoneyTypeInProcessorFromAcqCenter",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"interfaces/IProcessor.sol": "IP"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"interfaces/IProcessor.sol": {
+			"keccak256": "0x9875da8fde90e879a733660d80f868e3be8b67c116e7256cfe2a66df730cdf38",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://3a4ae68ef82b86b1ea17829a0b8f30cf11d61b54d484e7dcabb0175dc2f1a5cf",
+				"dweb:/ipfs/QmcjMmFKoRx7ScSikWshFe5zNowTSmCoRJ3cNWGZGiFgbj"
+			]
+		}
+	},
+	"version": 1
+}

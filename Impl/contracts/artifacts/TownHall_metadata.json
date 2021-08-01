@@ -1,0 +1,336 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint128",
+								"name": "_idLicense_uint",
+								"type": "uint128"
+							},
+							{
+								"internalType": "address",
+								"name": "_accountRequester_addr",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "_producerName_str",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "_producerAddress_str",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "_apiaryName_str",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "_apiaryAddress_str",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "_honeyTypes_str",
+								"type": "string"
+							},
+							{
+								"internalType": "uint8",
+								"name": "_validityMonths_uint",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint256",
+								"name": "_expirationDate_str",
+								"type": "uint256"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct TownHall.License_st",
+						"name": "lic",
+						"type": "tuple"
+					}
+				],
+				"name": "LicenseEv",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "accountRequester",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "producerName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "producerAddress",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "apiaryName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "apiaryAddress",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "honeyTypes",
+						"type": "string"
+					}
+				],
+				"name": "EmitLicense",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "UpdateTotalBeekeepers",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "townName_str",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "townCountry_str",
+						"type": "string"
+					}
+				],
+				"name": "UpdateTownHallLocation",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_counterLicenses",
+				"outputs": [
+					{
+						"internalType": "uint16",
+						"name": "",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_numOfBeekeepers_uint",
+				"outputs": [
+					{
+						"internalType": "uint16",
+						"name": "",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_townCountry_str",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_townName_str",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "licenses",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "_idLicense_uint",
+						"type": "uint128"
+					},
+					{
+						"internalType": "address",
+						"name": "_accountRequester_addr",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_producerName_str",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_producerAddress_str",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_apiaryName_str",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_apiaryAddress_str",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_honeyTypes_str",
+						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_validityMonths_uint",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_expirationDate_str",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "TownHall SC Member",
+			"kind": "dev",
+			"methods": {},
+			"title": "TownHall",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"EmitLicense(address,string,string,string,string,string)": {
+					"notice": "Emit a new valid license for an Apiary requester "
+				},
+				"UpdateTotalBeekeepers()": {
+					"notice": "When a new Apiary is created, increase the number of total beekeeper in TownHall registers "
+				},
+				"_counterLicenses()": {
+					"notice": "Variable which contains the total number of licenses available "
+				},
+				"_numOfBeekeepers_uint()": {
+					"notice": "Increase the variable whenever a new Apiary instance is created    _numOfBeekeepers_uint != _counterLicenses   Number of beekeepers may be higher then the number of licenses because one beekeeper       does not always have a valid license"
+				},
+				"_owner()": {
+					"notice": "Contract states "
+				},
+				"constructor": {
+					"notice": "When a new instance is deployed, the owner address get the sender address "
+				},
+				"licenses(address)": {
+					"notice": "TownHall keeps the track of valid licenses, with address as a key and apiary address as a value "
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/TownHall.sol": "TownHall"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/TownHall.sol": {
+			"keccak256": "0x6b55397bfb8e19d636472f6cbdd980e71753729e8060a06640adcbd492451f5a",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://868f0c50f848e888d9a1ed2c595a006d041d12eaca1d55c671c493ed225ba6a1",
+				"dweb:/ipfs/QmZJuk3EYETu8rTZuvPYoouMSCmmZeYe3YKnfPskvE9oxH"
+			]
+		},
+		"interfaces/ITownHall.sol": {
+			"keccak256": "0x0a84497ba4649f94e66dd2952636fa196c0d4878b04df57b12fb96bef0a68d74",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://5f173891bdbde9a6eb06e8be56c7579237f37ba3a6eb4e2ec8074c27536cbecb",
+				"dweb:/ipfs/QmaP9Aryr251MBb7Ygf5ZJgWfsuJ3WCf9WdV1kXKud4xqw"
+			]
+		}
+	},
+	"version": 1
+}

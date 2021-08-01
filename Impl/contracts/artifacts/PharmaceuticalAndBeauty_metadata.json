@@ -1,0 +1,89 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "_owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "The Pharmaceutical and Beauty SC Member",
+			"kind": "dev",
+			"methods": {},
+			"title": "Pharmaceutical and Beauty",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"_owner()": {
+					"notice": "Contract states "
+				},
+				"constructor": {
+					"notice": "When a new instance is deployed, the owner address get the sender address "
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/PharmaceuticalAndBeauty.sol": "PharmaceuticalAndBeauty"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/PharmaceuticalAndBeauty.sol": {
+			"keccak256": "0x02995d2d3fc017622f2fe50d6f3bbb4433d5c13f161346f6cc06d7d330dce531",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://ed55cc697c25f52811e1abadb54fa9e5c0a573e3e0502f15a1dbee4e96348e02",
+				"dweb:/ipfs/QmRapYSy6MuMPUZsgLK3AiZzzvm4bd2xM4HbLBqee1kPgW"
+			]
+		},
+		"contracts/TownHall.sol": {
+			"keccak256": "0x6b55397bfb8e19d636472f6cbdd980e71753729e8060a06640adcbd492451f5a",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://868f0c50f848e888d9a1ed2c595a006d041d12eaca1d55c671c493ed225ba6a1",
+				"dweb:/ipfs/QmZJuk3EYETu8rTZuvPYoouMSCmmZeYe3YKnfPskvE9oxH"
+			]
+		},
+		"interfaces/ITownHall.sol": {
+			"keccak256": "0x0a84497ba4649f94e66dd2952636fa196c0d4878b04df57b12fb96bef0a68d74",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://5f173891bdbde9a6eb06e8be56c7579237f37ba3a6eb4e2ec8074c27536cbecb",
+				"dweb:/ipfs/QmaP9Aryr251MBb7Ygf5ZJgWfsuJ3WCf9WdV1kXKud4xqw"
+			]
+		}
+	},
+	"version": 1
+}

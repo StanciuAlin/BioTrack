@@ -1,0 +1,64 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "accountRequester_addr",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "honeyTypes_str",
+						"type": "string"
+					}
+				],
+				"name": "AnalyzeHoney",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"interfaces/ILaboratory.sol": "ILaboratory"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"interfaces/ILaboratory.sol": {
+			"keccak256": "0xd0cbb41cfd339afc8544696e30bbd8eb6a01aa20415d4896106f0050e352118c",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://f2f5f95c067a918fa840c4a052f26c22bb9ecbe9de50853912ffde1fcc10ab33",
+				"dweb:/ipfs/QmVqJj5C9RAQsAeKuNbnMtfHucNt7ydhnVqZNXXHFQEcKB"
+			]
+		}
+	},
+	"version": 1
+}

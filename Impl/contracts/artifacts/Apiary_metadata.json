@@ -1,0 +1,498 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "apiaryHoneyUID",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "apiaryHoney",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint128",
+						"name": "quantity",
+						"type": "uint128"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "totalQuantity",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"name": "RegisterHoneyEv",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "apiaryHoney",
+						"type": "string"
+					},
+					{
+						"internalType": "uint128",
+						"name": "quantity",
+						"type": "uint128"
+					}
+				],
+				"name": "AddHoneyInApiaryToSell",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "honeyType",
+						"type": "string"
+					}
+				],
+				"name": "AddNewHoneyTypeInApiary",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "acquisitionCenterContract_addr",
+						"type": "address"
+					}
+				],
+				"name": "RegisterAtAcquisitionCenter",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "townHallContract_addr",
+						"type": "address"
+					}
+				],
+				"name": "RegisterAtTownHall",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "RequestLicense",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "apiaryHoneyUID_uint",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "honeyType_str",
+						"type": "string"
+					},
+					{
+						"internalType": "uint128",
+						"name": "quantity_uint",
+						"type": "uint128"
+					}
+				],
+				"name": "ReturnNonEcologicalHoneyToApiary",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "apiaryHoneyUIDToSell",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "apiaryHoney",
+						"type": "string"
+					},
+					{
+						"internalType": "uint128",
+						"name": "quantity",
+						"type": "uint128"
+					}
+				],
+				"name": "SellHoney",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "apiaryName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "apiaryLocation",
+						"type": "string"
+					}
+				],
+				"name": "UpdateApiaryData",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "producerName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "producerLocation",
+						"type": "string"
+					}
+				],
+				"name": "UpdatePersonalData",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_apiaryHoneyUID_uint",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_apiaryLocation_str",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_apiaryName_str",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_honeyTypeAvailableInApiary_str",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_honeyTypeAvailableToSell_str",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_producerLocation_str",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_producerName_str",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_quantity_uint",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "acquisitionCenter",
+				"outputs": [
+					{
+						"internalType": "contract AcquisitionCenter",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "honeyInApiaryToSellEvidence",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "honeyType",
+						"type": "string"
+					},
+					{
+						"internalType": "uint128",
+						"name": "quantity",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "townHall",
+				"outputs": [
+					{
+						"internalType": "contract TownHall",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "The Apiary SC Member",
+			"kind": "dev",
+			"methods": {},
+			"title": "Apiary",
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"RegisterHoneyEv(uint256,string,uint128,uint256,uint256)": {
+					"notice": "Log honey and quantity when the Apiary register a new honey input "
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"AddHoneyInApiaryToSell(string,uint128)": {
+					"notice": "Set the quantity for honey type Example set 1000kg when you want to sells or set to 0kg when the honey is sold "
+				},
+				"AddNewHoneyTypeInApiary(string)": {
+					"notice": "If the Apiary can provide a new honey type, it can append to the existent list of honey types    Temporary limitation: only one honey type per Apiary"
+				},
+				"RegisterAtAcquisitionCenter(address)": {
+					"notice": "The Apiary member has to register to the Acquisition Center "
+				},
+				"RegisterAtTownHall(address)": {
+					"notice": "The Apiary member has to register to the TownHall "
+				},
+				"RequestLicense()": {
+					"notice": "The Apiary request a new valid License to be able to market the honey "
+				},
+				"UpdateApiaryData(string,string)": {
+					"notice": "Update Apiary society data "
+				},
+				"UpdatePersonalData(string,string)": {
+					"notice": "Update Apiary keeper personal data "
+				},
+				"_owner()": {
+					"notice": "Contract states "
+				},
+				"acquisitionCenter()": {
+					"notice": "One instace of Acquisition Center to sell the honey "
+				},
+				"constructor": {
+					"notice": "When a new instance is deployed, the owner address get the sender address "
+				},
+				"townHall()": {
+					"notice": "One instace of Townhall to get the valid license "
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Apiary.sol": "Apiary"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/AcquisitionCenter.sol": {
+			"keccak256": "0xa9f3c3b257c62a69cdad95138327b0089ce5cef24429bcbd8109908d8acdb1fd",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://8a00109e016037c5be0267bd52e91d89a0565baa566fed7a2faa85d67f603eed",
+				"dweb:/ipfs/Qmbb8JmHXhTdL5nySGCbPq5pTbsH5yvqykbTPTQQZwgp1r"
+			]
+		},
+		"contracts/Apiary.sol": {
+			"keccak256": "0x0d11ef8a93a80f7595d543f6494eb98a0995c2e0249e8088fe7dcdb1f2454cd4",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://2ddb136dde71b6e9a209e7720a01e114345d17599eb4b7730812c876e8ecfb4a",
+				"dweb:/ipfs/Qmb7974LzU3A6jEHUw9mFJFwUcLHyEBVQnqoL544oc3Gu7"
+			]
+		},
+		"contracts/Laboratory.sol": {
+			"keccak256": "0xe8c1b2c73ba194045c36fb3092094229cd031212c794d3633cea66cade4aa9ab",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://a4d2c316be4e060d14334cb8c378dbbfb87c952b21e99798bd00b2b3ef27fe7b",
+				"dweb:/ipfs/QmVbR7D1c8bRQ3uGkn6z5EKpnBN2HRQBdVjX1xTeL6MAp2"
+			]
+		},
+		"contracts/TownHall.sol": {
+			"keccak256": "0x6b55397bfb8e19d636472f6cbdd980e71753729e8060a06640adcbd492451f5a",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://868f0c50f848e888d9a1ed2c595a006d041d12eaca1d55c671c493ed225ba6a1",
+				"dweb:/ipfs/QmZJuk3EYETu8rTZuvPYoouMSCmmZeYe3YKnfPskvE9oxH"
+			]
+		},
+		"interfaces/IAcquisitionCenter.sol": {
+			"keccak256": "0x1eae4bc0b3ef767926ff62b0f9ad58efdb6f2b82eed884bf8ea05ddb8d7d4cdb",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://422f85cb347b4c09802267fdda17aefec89d4b219f90283547a4c40c22ddfc0e",
+				"dweb:/ipfs/QmbwWJYCB6k4toxefHXxV12v3DN1jWRawVB9UoqY1N1kxk"
+			]
+		},
+		"interfaces/IApiary.sol": {
+			"keccak256": "0x9e33149fc8c7e009e9ea59b1726e54793dd7adb88ca00af1be652b91fb2f73b3",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://a4a4c7182b04066881b1ba90de7b7e5d63392b32d49c57539823c90fb8f44d9a",
+				"dweb:/ipfs/Qmcz1jF34kmUAsEm9WVZ4iYkYxaz7oFB6bho4ZLP3ZGq4V"
+			]
+		},
+		"interfaces/ILaboratory.sol": {
+			"keccak256": "0xd0cbb41cfd339afc8544696e30bbd8eb6a01aa20415d4896106f0050e352118c",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://f2f5f95c067a918fa840c4a052f26c22bb9ecbe9de50853912ffde1fcc10ab33",
+				"dweb:/ipfs/QmVqJj5C9RAQsAeKuNbnMtfHucNt7ydhnVqZNXXHFQEcKB"
+			]
+		},
+		"interfaces/ITownHall.sol": {
+			"keccak256": "0x0a84497ba4649f94e66dd2952636fa196c0d4878b04df57b12fb96bef0a68d74",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://5f173891bdbde9a6eb06e8be56c7579237f37ba3a6eb4e2ec8074c27536cbecb",
+				"dweb:/ipfs/QmaP9Aryr251MBb7Ygf5ZJgWfsuJ3WCf9WdV1kXKud4xqw"
+			]
+		}
+	},
+	"version": 1
+}

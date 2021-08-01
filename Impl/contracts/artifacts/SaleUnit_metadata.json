@@ -1,0 +1,89 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "_owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "The Sale Unit SC Member",
+			"kind": "dev",
+			"methods": {},
+			"title": "Sale unit",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"_owner()": {
+					"notice": "Contract states "
+				},
+				"constructor": {
+					"notice": "When a new instance is deployed, the owner address get the sender address "
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/SaleUnit.sol": "SaleUnit"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/SaleUnit.sol": {
+			"keccak256": "0x6d1f0485b21d64565a756a5cf3967fdfe8d2fbf7f4cadfc9670d0221451698c2",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://43f27a0ad6db31610e327d59cb39378384444976139f9a632195c1bc739f117e",
+				"dweb:/ipfs/QmcSruvhsMaFHscvT8c1YAYHw32346HkX6XcAUKZr3fsQm"
+			]
+		},
+		"contracts/TownHall.sol": {
+			"keccak256": "0x6b55397bfb8e19d636472f6cbdd980e71753729e8060a06640adcbd492451f5a",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://868f0c50f848e888d9a1ed2c595a006d041d12eaca1d55c671c493ed225ba6a1",
+				"dweb:/ipfs/QmZJuk3EYETu8rTZuvPYoouMSCmmZeYe3YKnfPskvE9oxH"
+			]
+		},
+		"interfaces/ITownHall.sol": {
+			"keccak256": "0x0a84497ba4649f94e66dd2952636fa196c0d4878b04df57b12fb96bef0a68d74",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://5f173891bdbde9a6eb06e8be56c7579237f37ba3a6eb4e2ec8074c27536cbecb",
+				"dweb:/ipfs/QmaP9Aryr251MBb7Ygf5ZJgWfsuJ3WCf9WdV1kXKud4xqw"
+			]
+		}
+	},
+	"version": 1
+}

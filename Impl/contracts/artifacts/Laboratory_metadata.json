@@ -1,0 +1,277 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint128",
+								"name": "_idReport_uint",
+								"type": "uint128"
+							},
+							{
+								"internalType": "address",
+								"name": "_accountRequester_addr",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "_honeyTypes_str",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "_lName_str",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "_lLocation_str",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "_dateOfAnalysis",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "_isEcological",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint256",
+								"name": "_price",
+								"type": "uint256"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct Laboratory.Report_st",
+						"name": "report",
+						"type": "tuple"
+					}
+				],
+				"name": "ReportEv",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "accountRequester_addr",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "honeyTypes_str",
+						"type": "string"
+					}
+				],
+				"name": "AnalyzeHoney",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "labName_str",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "labLocation_str",
+						"type": "string"
+					}
+				],
+				"name": "UpdateLaboratoryInfo",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_counterReports_uint",
+				"outputs": [
+					{
+						"internalType": "uint16",
+						"name": "",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_labLocation_str",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_labName_str",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "reports",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "_idReport_uint",
+						"type": "uint128"
+					},
+					{
+						"internalType": "address",
+						"name": "_accountRequester_addr",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_honeyTypes_str",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_lName_str",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_lLocation_str",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_dateOfAnalysis",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_isEcological",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"ReportEv(address,(uint128,address,string,string,string,uint256,bool,uint256))": {
+					"notice": "Contract events "
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"_counterReports_uint()": {
+					"notice": "Variable which contains the total number of reports "
+				},
+				"_owner()": {
+					"notice": "Contract states "
+				},
+				"constructor": {
+					"notice": "When a new instance is deployed, the owner address get the sender address "
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Laboratory.sol": "Laboratory"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Laboratory.sol": {
+			"keccak256": "0xe8c1b2c73ba194045c36fb3092094229cd031212c794d3633cea66cade4aa9ab",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://a4d2c316be4e060d14334cb8c378dbbfb87c952b21e99798bd00b2b3ef27fe7b",
+				"dweb:/ipfs/QmVbR7D1c8bRQ3uGkn6z5EKpnBN2HRQBdVjX1xTeL6MAp2"
+			]
+		},
+		"interfaces/ILaboratory.sol": {
+			"keccak256": "0xd0cbb41cfd339afc8544696e30bbd8eb6a01aa20415d4896106f0050e352118c",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://f2f5f95c067a918fa840c4a052f26c22bb9ecbe9de50853912ffde1fcc10ab33",
+				"dweb:/ipfs/QmVqJj5C9RAQsAeKuNbnMtfHucNt7ydhnVqZNXXHFQEcKB"
+			]
+		}
+	},
+	"version": 1
+}

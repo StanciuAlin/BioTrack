@@ -6,6 +6,7 @@ import "../interfaces/IAcquisitionCenter.sol";
 
 import "./Apiary.sol";
 import "./Laboratory.sol";
+import "./Processor.sol";
 
 /**
  * @title Acquisition Center
@@ -26,6 +27,7 @@ contract AcquisitionCenter is IAcquisitionCenter{
      
      Apiary public apiary;
      Laboratory public laboratory;
+     Processor public processor;
      
      struct AcquisitionCenterHoney_st {
          string honeyType_str;
@@ -69,6 +71,10 @@ contract AcquisitionCenter is IAcquisitionCenter{
         uint128 honeyQuantity,
         uint payment
         ); 
+    
+    event HoneyTransferToProcessor(
+        BeekeeperHoney_st beekeeperHoney
+        );
     
     // when return the honey to apiary    
     event ReturnNonEcologicalHoneyToApiaryEv();
@@ -195,6 +201,7 @@ contract AcquisitionCenter is IAcquisitionCenter{
                 _counterBeekeeperHoney_uint += 1;
             }
             
+            _acquisitionCenterHoneyUID_uint += 1;
             
             /** Temporary solution for payment, 25 fix price */
             emit HoneyReceivedFromApiaryEv(
@@ -207,8 +214,8 @@ contract AcquisitionCenter is IAcquisitionCenter{
             
         }
     
-    /** The Acquisition Center member has to register to the Apiary */   
-    function RegisterApiary(
+    /** The Apiary member has to register to the Acquisition Center */   
+    function RegisterAtApiary(
         address apiaryContract_addr
         ) 
     public 
@@ -218,7 +225,7 @@ contract AcquisitionCenter is IAcquisitionCenter{
     }
 
 
-    /** The Apiary member has to register to the Acquisition Center */   
+    /** The Laboratory member has to register to the Acquisition Center */   
     function RegisterAtLaboratory(
         address laboratoryCenterContract_addr
         ) 
@@ -228,10 +235,19 @@ contract AcquisitionCenter is IAcquisitionCenter{
         laboratory = Laboratory(laboratoryCenterContract_addr);
     }
 
+    /** The Processor member has to register to the Acquisition Center */   
+    function RegisterAtProcessor(
+        address processorContract_addr
+        ) 
+    public 
+    restricted {
+        
+        processor = Processor(processorContract_addr);
+    }
+    
+    // I can put restriction for contract address caller
     
     bool public test = true;
-    
-    
     
     function CheckHoneyAnalysysResults()
         public
@@ -259,7 +275,22 @@ contract AcquisitionCenter is IAcquisitionCenter{
         
     }
     
-    
+    function TransferHoneyToProcessor () 
+        public 
+        restricted {
+        
+        for (uint128 it = 0; it < _counterBeekeeperHoney_uint; ++it) {
+            
+            processor.TransferHoneyFromAcqCenterToProcessor(
+                beekeeperHoneyEvidence[it].acquisitionCenterHoneyUID_uint,
+                beekeeperHoneyEvidence[it].honeyType_str,
+                beekeeperHoneyEvidence[it].quantity_uint
+                );
+                
+            emit HoneyTransferToProcessor(beekeeperHoneyEvidence[it]);
+        }
+        
+    }
     
     
     

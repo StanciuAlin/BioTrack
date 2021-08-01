@@ -1,0 +1,224 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "honeyType",
+						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "price",
+						"type": "uint8"
+					}
+				],
+				"name": "RegisterNewHoneyTypeInProcessor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "acquisitionCenterHoneyUID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "honeyType",
+						"type": "string"
+					},
+					{
+						"internalType": "uint128",
+						"name": "quantity",
+						"type": "uint128"
+					}
+				],
+				"name": "TransferHoneyFromAcqCenterToProcessor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "processorName_str",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "processorLocation_str",
+						"type": "string"
+					}
+				],
+				"name": "UpdateProcessorInfo",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_processorLocation_str",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_processorName_str",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "honeyTypesWithPriceEvidence",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "honeyType_str",
+						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "pricePerKg_uint",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint128",
+						"name": "quantity_uint",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "receivedAcquisitionCenterHoneyEvidence",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "acquisitionCenterHoneyUID_uint",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "honeyType_str",
+						"type": "string"
+					},
+					{
+						"internalType": "uint128",
+						"name": "quantity_uint",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "The Processor SC Member",
+			"kind": "dev",
+			"methods": {},
+			"title": "Processor",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"_owner()": {
+					"notice": "Contract states "
+				},
+				"constructor": {
+					"notice": "When a new instance is deployed, the owner address get the sender address "
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Processor.sol": "Processor"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Processor.sol": {
+			"keccak256": "0xc8f0c2aa92d4f758a40100ffc9c67bb22295500c1fab5c6715123798fecd04be",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://5dbda97b457796e583e93370c857a92dd70390dfd81e658488985c2446251f3e",
+				"dweb:/ipfs/QmUU6nrRwPW2JPEKgqqNakQ3QHwcxfU1hjAHkFgLc6qEAZ"
+			]
+		},
+		"interfaces/IProcessor.sol": {
+			"keccak256": "0xe33d31dcad0017a1106d399cbd20b99a80c8b8639b7e3035b1bce905c3609d40",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://a20ea50285de5245d50583c15c3864a70950a9e9a48ad324aa0f9a478e1f6b9a",
+				"dweb:/ipfs/QmX4TKSm7VYi3Rsfye4FYknC4tfmSCBP6w4iw8gXY5aWm6"
+			]
+		}
+	},
+	"version": 1
+}

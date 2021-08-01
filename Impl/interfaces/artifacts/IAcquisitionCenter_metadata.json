@@ -1,0 +1,74 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "apiaryAccount_addr",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "apiaryHoneyUID_uint",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "honeyType_str",
+						"type": "string"
+					},
+					{
+						"internalType": "uint128",
+						"name": "quantity_uint",
+						"type": "uint128"
+					}
+				],
+				"name": "RegisterReceivedBeekeeperHoney",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"interfaces/IAcquisitionCenter.sol": "IAcquisitionCenter"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"interfaces/IAcquisitionCenter.sol": {
+			"keccak256": "0x1eae4bc0b3ef767926ff62b0f9ad58efdb6f2b82eed884bf8ea05ddb8d7d4cdb",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://422f85cb347b4c09802267fdda17aefec89d4b219f90283547a4c40c22ddfc0e",
+				"dweb:/ipfs/QmbwWJYCB6k4toxefHXxV12v3DN1jWRawVB9UoqY1N1kxk"
+			]
+		}
+	},
+	"version": 1
+}
