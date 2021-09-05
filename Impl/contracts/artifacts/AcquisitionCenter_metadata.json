@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.4+commit.c7e474f2"
+		"version": "0.8.7+commit.e28d00a7"
 	},
 	"language": "Solidity",
 	"output": {
@@ -492,7 +492,7 @@
 		"compilationTarget": {
 			"contracts/AcquisitionCenter.sol": "AcquisitionCenter"
 		},
-		"evmVersion": "istanbul",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -529,19 +529,19 @@
 			]
 		},
 		"contracts/Processor.sol": {
-			"keccak256": "0xb2a388743f1d523f9350e9e5307948be550d5c3d7455a43782d0044a4acb6a16",
+			"keccak256": "0xc8f0c2aa92d4f758a40100ffc9c67bb22295500c1fab5c6715123798fecd04be",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://22d570f289482b17d0c32c93ab8fe7755c89810c8e117b27eba7c5a958dc972a",
-				"dweb:/ipfs/QmZofA24nBupWFmYju6ZDYSxHXuw5mtEpM2rMnPQW48LZA"
+				"bzz-raw://5dbda97b457796e583e93370c857a92dd70390dfd81e658488985c2446251f3e",
+				"dweb:/ipfs/QmUU6nrRwPW2JPEKgqqNakQ3QHwcxfU1hjAHkFgLc6qEAZ"
 			]
 		},
 		"contracts/TownHall.sol": {
-			"keccak256": "0x6b55397bfb8e19d636472f6cbdd980e71753729e8060a06640adcbd492451f5a",
+			"keccak256": "0xb40859c3c6141d7731f67e04ce938b8b1914b817a2f2a3391a2ab8fdfa919e62",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://868f0c50f848e888d9a1ed2c595a006d041d12eaca1d55c671c493ed225ba6a1",
-				"dweb:/ipfs/QmZJuk3EYETu8rTZuvPYoouMSCmmZeYe3YKnfPskvE9oxH"
+				"bzz-raw://92d0f5b5240abeec70f5d5c83ff00638f34deb5b0d1115b8566601b5c6c23dbd",
+				"dweb:/ipfs/QmXAZXUcGpCDu6JnSrZ1cNoZkqDAi1EhQmSmJup2SfVS5u"
 			]
 		},
 		"interfaces/IAcquisitionCenter.sol": {

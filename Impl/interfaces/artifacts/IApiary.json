@@ -31,6 +31,7 @@
 	},
 	"data": {
 		"bytecode": {
+			"functionDebugData": {},
 			"generatedSources": [],
 			"linkReferences": {},
 			"object": "",
@@ -38,6 +39,7 @@
 			"sourceMap": ""
 		},
 		"deployedBytecode": {
+			"functionDebugData": {},
 			"generatedSources": [],
 			"immutableReferences": {},
 			"linkReferences": {},
@@ -47,24 +49,29 @@
 		},
 		"gasEstimates": null,
 		"methodIdentifiers": {
-			"RegisterNewHoneyTypeInProcessorFromAcqCenter(string,uint8)": "de682f8b"
+			"ReturnNonEcologicalHoneyToApiary(uint256,string,uint128)": "0e35fab7"
 		}
 	},
 	"abi": [
 		{
 			"inputs": [
 				{
+					"internalType": "uint256",
+					"name": "apiaryHoneyUID_uint",
+					"type": "uint256"
+				},
+				{
 					"internalType": "string",
-					"name": "honeyType",
+					"name": "honeyType_str",
 					"type": "string"
 				},
 				{
-					"internalType": "uint8",
-					"name": "price",
-					"type": "uint8"
+					"internalType": "uint128",
+					"name": "quantity_uint",
+					"type": "uint128"
 				}
 			],
-			"name": "RegisterNewHoneyTypeInProcessorFromAcqCenter",
+			"name": "ReturnNonEcologicalHoneyToApiary",
 			"outputs": [],
 			"stateMutability": "nonpayable",
 			"type": "function"

@@ -30,21 +30,12 @@ import "../interfaces/ITownHall.sol";
     string public _townCountry_str = "";
  
     /** TownHall keeps the track of valid licenses, with address as a key and apiary address as a value */
-    //mapping(address => ApiaryAddress_st) public licenses;
     mapping(address => License_st) public licenses;
 
-    /* License_st _validLicense_st; No needed for the moment */
-
+    /** Event triggered when a new valid license is emitted */
     event LicenseEv (address owner, License_st lic);
- 
-    /* Struct to keep a pair of ApiaryAddress with its id in TownHall registers
-    struct ApiaryAddress_st {
-        //address apiaryAddress_addr; No needed because --> myContract.address
-        uint128 idAddress_uint;
-        License_st validLicense;
-    }
-    */
-
+    
+    /** Struct which represent the license document */
     struct License_st {
         uint128 _idLicense_uint;
         address _accountRequester_addr;

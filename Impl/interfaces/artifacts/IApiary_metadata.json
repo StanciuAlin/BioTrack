@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.4+commit.c7e474f2"
+		"version": "0.8.7+commit.e28d00a7"
 	},
 	"language": "Solidity",
 	"output": {
@@ -8,17 +8,22 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "apiaryHoneyUID_uint",
+						"type": "uint256"
+					},
+					{
 						"internalType": "string",
-						"name": "honeyType",
+						"name": "honeyType_str",
 						"type": "string"
 					},
 					{
-						"internalType": "uint8",
-						"name": "price",
-						"type": "uint8"
+						"internalType": "uint128",
+						"name": "quantity_uint",
+						"type": "uint128"
 					}
 				],
-				"name": "RegisterNewHoneyTypeInProcessorFromAcqCenter",
+				"name": "ReturnNonEcologicalHoneyToApiary",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -37,9 +42,9 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"interfaces/IProcessor.sol": "IApiary"
+			"interfaces/IApiary.sol": "IApiary"
 		},
-		"evmVersion": "istanbul",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -51,12 +56,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"interfaces/IProcessor.sol": {
-			"keccak256": "0xeccb81048e8e7c1b8180c7f8102c98a4818709cad5f5cb237e5b847a5ece84da",
+		"interfaces/IApiary.sol": {
+			"keccak256": "0x9e33149fc8c7e009e9ea59b1726e54793dd7adb88ca00af1be652b91fb2f73b3",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://d4739d69cf857904d952f77f9b82344fa23bbc332d650cfacddf746798a108ed",
-				"dweb:/ipfs/QmZnGxubBmxgmMPwxYkUHspYnFipmWv4ZaDSoybrQvUgf7"
+				"bzz-raw://a4a4c7182b04066881b1ba90de7b7e5d63392b32d49c57539823c90fb8f44d9a",
+				"dweb:/ipfs/Qmcz1jF34kmUAsEm9WVZ4iYkYxaz7oFB6bho4ZLP3ZGq4V"
 			]
 		}
 	},

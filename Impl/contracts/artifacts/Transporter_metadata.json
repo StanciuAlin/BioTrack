@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.4+commit.c7e474f2"
+		"version": "0.8.7+commit.e28d00a7"
 	},
 	"language": "Solidity",
 	"output": {
@@ -48,7 +48,7 @@
 		"compilationTarget": {
 			"contracts/Transporter.sol": "Transporter"
 		},
-		"evmVersion": "istanbul",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -61,11 +61,11 @@
 	},
 	"sources": {
 		"contracts/TownHall.sol": {
-			"keccak256": "0x6b55397bfb8e19d636472f6cbdd980e71753729e8060a06640adcbd492451f5a",
+			"keccak256": "0xb40859c3c6141d7731f67e04ce938b8b1914b817a2f2a3391a2ab8fdfa919e62",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://868f0c50f848e888d9a1ed2c595a006d041d12eaca1d55c671c493ed225ba6a1",
-				"dweb:/ipfs/QmZJuk3EYETu8rTZuvPYoouMSCmmZeYe3YKnfPskvE9oxH"
+				"bzz-raw://92d0f5b5240abeec70f5d5c83ff00638f34deb5b0d1115b8566601b5c6c23dbd",
+				"dweb:/ipfs/QmXAZXUcGpCDu6JnSrZ1cNoZkqDAi1EhQmSmJup2SfVS5u"
 			]
 		},
 		"contracts/Transporter.sol": {

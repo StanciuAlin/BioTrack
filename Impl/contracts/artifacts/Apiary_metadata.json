@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.4+commit.c7e474f2"
+		"version": "0.8.7+commit.e28d00a7"
 	},
 	"language": "Solidity",
 	"output": {
@@ -417,7 +417,7 @@
 		"compilationTarget": {
 			"contracts/Apiary.sol": "Apiary"
 		},
-		"evmVersion": "istanbul",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -430,11 +430,11 @@
 	},
 	"sources": {
 		"contracts/AcquisitionCenter.sol": {
-			"keccak256": "0xa9f3c3b257c62a69cdad95138327b0089ce5cef24429bcbd8109908d8acdb1fd",
+			"keccak256": "0x43e60ce22c7053dfa70bd9e2579a26d68f43fca6a90ed7c75e33f2e781307c80",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://8a00109e016037c5be0267bd52e91d89a0565baa566fed7a2faa85d67f603eed",
-				"dweb:/ipfs/Qmbb8JmHXhTdL5nySGCbPq5pTbsH5yvqykbTPTQQZwgp1r"
+				"bzz-raw://0a5d41be96fd90706a0c82b22f50133c62f664dc28fc66500066bd0b89454853",
+				"dweb:/ipfs/QmYLKnCrYo5EzCTMk4RMbkK3i7ZfPfANd7Z8g4qkAdJ2LY"
 			]
 		},
 		"contracts/Apiary.sol": {
@@ -453,12 +453,20 @@
 				"dweb:/ipfs/QmVbR7D1c8bRQ3uGkn6z5EKpnBN2HRQBdVjX1xTeL6MAp2"
 			]
 		},
-		"contracts/TownHall.sol": {
-			"keccak256": "0x6b55397bfb8e19d636472f6cbdd980e71753729e8060a06640adcbd492451f5a",
+		"contracts/Processor.sol": {
+			"keccak256": "0xc8f0c2aa92d4f758a40100ffc9c67bb22295500c1fab5c6715123798fecd04be",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://868f0c50f848e888d9a1ed2c595a006d041d12eaca1d55c671c493ed225ba6a1",
-				"dweb:/ipfs/QmZJuk3EYETu8rTZuvPYoouMSCmmZeYe3YKnfPskvE9oxH"
+				"bzz-raw://5dbda97b457796e583e93370c857a92dd70390dfd81e658488985c2446251f3e",
+				"dweb:/ipfs/QmUU6nrRwPW2JPEKgqqNakQ3QHwcxfU1hjAHkFgLc6qEAZ"
+			]
+		},
+		"contracts/TownHall.sol": {
+			"keccak256": "0xb40859c3c6141d7731f67e04ce938b8b1914b817a2f2a3391a2ab8fdfa919e62",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://92d0f5b5240abeec70f5d5c83ff00638f34deb5b0d1115b8566601b5c6c23dbd",
+				"dweb:/ipfs/QmXAZXUcGpCDu6JnSrZ1cNoZkqDAi1EhQmSmJup2SfVS5u"
 			]
 		},
 		"interfaces/IAcquisitionCenter.sol": {
@@ -483,6 +491,14 @@
 			"urls": [
 				"bzz-raw://f2f5f95c067a918fa840c4a052f26c22bb9ecbe9de50853912ffde1fcc10ab33",
 				"dweb:/ipfs/QmVqJj5C9RAQsAeKuNbnMtfHucNt7ydhnVqZNXXHFQEcKB"
+			]
+		},
+		"interfaces/IProcessor.sol": {
+			"keccak256": "0xe33d31dcad0017a1106d399cbd20b99a80c8b8639b7e3035b1bce905c3609d40",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://a20ea50285de5245d50583c15c3864a70950a9e9a48ad324aa0f9a478e1f6b9a",
+				"dweb:/ipfs/QmX4TKSm7VYi3Rsfye4FYknC4tfmSCBP6w4iw8gXY5aWm6"
 			]
 		},
 		"interfaces/ITownHall.sol": {
